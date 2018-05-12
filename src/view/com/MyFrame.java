@@ -25,10 +25,6 @@ public class MyFrame extends JFrame{
 	
 	public MyFrame() {
 		
-		// 开发过程中的设置
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 		setLayout(null);
 		// 设置JFrame大小
 		setSize(800,600);
@@ -41,7 +37,7 @@ public class MyFrame extends JFrame{
 				
 		
 		// 设置关闭按钮不可用
-		//setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		
 		

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import view.classify.ClassifyStep1Frame;
+import view.classify.ClassifyStep4Frame;
 
 
 public class MainView extends JFrame{

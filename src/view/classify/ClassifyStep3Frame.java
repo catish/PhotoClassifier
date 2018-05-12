@@ -48,8 +48,10 @@ public class ClassifyStep3Frame extends MyFrame{
 		btnNext.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ClassifyStep4Frame(title, folderPaths, method);
+				// ·Ç¿Õ¼ì²é
 				dispose();
+				new ClassifyStep4Frame(title, folderPaths, method, outputPath);
+				
 				
 			}
 		});
