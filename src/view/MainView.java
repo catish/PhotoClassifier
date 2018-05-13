@@ -18,20 +18,19 @@ public class MainView extends JFrame{
 	private JButton btnClass = null;
 	
 	public MainView(){
-		
+		// 初始化组件
+		initCompent();
+
 		// 设置JFrame可见
 		setVisible(true);
 		// 设置JFrame大小
-		setSize(1200,600);
+		setSize(800,600);
 		// 设置JFrame位置
-		setLocation(300,100);
+		setLocation(500,200);
 		// 设置JFrame布局方式
 		//setLayout(null);
 		// 点关闭按钮时退出程序
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		// 初始化组件
-		initCompent();
 		
 	}
 	

@@ -20,7 +20,8 @@ public class ClassifyHelper {
 	public Map<String, List<String>> byTime(Map<String,String> photoInfos,  String method) {
 		for(String path : photoInfos.keySet()) {
 			String time = photoInfos.get(path);
-			String[] temp = time.split(",");
+			System.out.println(time);
+			String[] temp = time.split(":");
 			if(method.equals("按月份")) {
 				photoInfos.put(path, temp[0] + temp[1]); 
 			} else if(method.equals("按年份")) {

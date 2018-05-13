@@ -24,7 +24,11 @@ public class MyFrame extends JFrame{
 	
 	
 	public MyFrame() {
+	
 		
+		initCompent();
+		
+		// 布局模式
 		setLayout(null);
 		// 设置JFrame大小
 		setSize(800,600);
@@ -37,11 +41,9 @@ public class MyFrame extends JFrame{
 				
 		
 		// 设置关闭按钮不可用
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
-		
-		
-		initCompent();
+	
 	}
 	
 	private void initCompent() {

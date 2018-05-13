@@ -36,7 +36,7 @@ public class ClassifyStep4Frame extends MyFrame{
 		
 		List<String> photoPaths = new ArrayList<String>();
 		for(String fp : folderPaths) {
-			photoPaths.addAll(fih.readFilePaths(fp));
+			photoPaths.addAll(fih.readPhotoPaths(fp));
 		}
 		/*
 		for(String test : photoPaths) {

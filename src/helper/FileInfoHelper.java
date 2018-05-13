@@ -20,7 +20,7 @@ import net.sf.json.JSONObject;
 public class FileInfoHelper {
 	
 	// 给定路径获取读取所有图片的绝对路径
-	public List<String> readFilePaths(String fileDir) {  
+	public List<String> readPhotoPaths(String fileDir) {  
 		List<String> photoPaths = new ArrayList<String>();
 		List<File> fileList = new ArrayList<File>();  
         File file = new File(fileDir);  
@@ -35,7 +35,7 @@ public class FileInfoHelper {
             		fileList.add(f);
             	}
             } else if (f.isDirectory()) {  
-            	photoPaths.addAll(readFilePaths(f.getAbsolutePath()));  
+            	photoPaths.addAll(readPhotoPaths(f.getAbsolutePath()));  
             }  
         }  
         for (File f1 : fileList) {  
