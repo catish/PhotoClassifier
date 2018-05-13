@@ -2,12 +2,13 @@ package view.com;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Vector;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.UIManager;
 
 public class MyFrame extends JFrame{
 
@@ -26,6 +27,7 @@ public class MyFrame extends JFrame{
 	public MyFrame() {
 	
 		
+		
 		initCompent();
 		
 		// 布局模式
@@ -38,11 +40,9 @@ public class MyFrame extends JFrame{
 		setResizable(false);
 		// 设置JFrame可见
 		setVisible(true);
-				
 		
-		// 设置关闭按钮不可用
-		//setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
+		//setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	
 	}
 	
@@ -115,19 +115,7 @@ public class MyFrame extends JFrame{
 		btn.setSize(BUTTON_WIDTH,BUTTON_HEIGHT);
 		btn.setLocation(680,490);
 		btn.setEnabled(false);
-		btn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose(); 
-			}
-		});
 		return btn;
-	}
-	
-	public void finishCompent() {
-		mainPanel.removeAll();
-		mainPanel.add(btnFinish);
-		mainPanel.repaint();
 	}
 	
 }

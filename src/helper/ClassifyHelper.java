@@ -117,7 +117,7 @@ public class ClassifyHelper {
 		}
 		
 		// 新建文件夹
-		private void CreateFolder(String p, String n) {
+		public void CreateFolder(String p, String n) {
 			String path = p+"\\"+n;
 			try {
 	            File foler = new File(path);
@@ -131,7 +131,7 @@ public class ClassifyHelper {
 		}
 		
 		// 复制图片
-		private void copyFile(String srcPath, String destPath) throws IOException {
+		public void copyFile(String srcPath, String destPath) throws IOException {
 	        try {
 	        	// 打开输入流
 	            FileInputStream fis = new FileInputStream(srcPath);

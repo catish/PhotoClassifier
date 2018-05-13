@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import view.com.MyFrame;
@@ -15,6 +16,7 @@ public class ClassifyStep2Frame extends MyFrame{
 	private String method = null;
 	private List<String> folderPaths = null;
 	
+	private JLabel message = null;
 	private JRadioButton[] rbtns = null;
 	private ButtonGroup btnGroup = null;
 	
@@ -39,6 +41,9 @@ public class ClassifyStep2Frame extends MyFrame{
 	}
 	
 	private void initCompent() {
+		// 设置标题
+		setTitle(title);
+				
 		btnLast.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -63,12 +68,22 @@ public class ClassifyStep2Frame extends MyFrame{
 			}
 		});
 		
+		message = getMessage();
 		rbtns = getRbtns(title);
 		btnGroup = getBtnGroup(rbtns);
+		subPanel.add(message);
 		for(int i=0; i<rbtns.length; i++) {
 			subPanel.add(rbtns[i]);
 		}
-		btnGroup = getBtnGroup(rbtns);
+		
+	}
+	
+	private JLabel getMessage() {
+		JLabel label = new JLabel();
+		label.setText("请选择照片分类方法:");
+		label.setSize(200,50);
+		label.setLocation(75,50);
+		return label;
 	}
 	
 	private JRadioButton[] getRbtns(String t) {
@@ -78,28 +93,28 @@ public class ClassifyStep2Frame extends MyFrame{
 			btns = new JRadioButton[2];
 			btn = new JRadioButton("按月份");
 			btn.setSize(100, 25);
-			btn.setLocation(100,50);
+			btn.setLocation(100,100);
 			btn.setSelected(true);
 			btns[0] = btn;
 			btn = new JRadioButton("按年份");
 			btn.setSize(100, 25);
-			btn.setLocation(100,50+35);
+			btn.setLocation(100,100+35);
 			btns[1] = btn;
 			
 		} else if(t.equals("按地点分类")) {
 			btns = new JRadioButton[3];
 			btn = new JRadioButton("按省份");
 			btn.setSize(100, 25);
-			btn.setLocation(100,50);
+			btn.setLocation(100,100);
 			btn.setSelected(true);
 			btns[0] = btn;
 			btn = new JRadioButton("按城市");
 			btn.setSize(100, 25);
-			btn.setLocation(100,50+35);
+			btn.setLocation(100,100+35);
 			btns[1] = btn;
 			btn = new JRadioButton("按行政区");
 			btn.setSize(100, 25);
-			btn.setLocation(100,50+35*2);
+			btn.setLocation(100,100+35*2);
 			btns[2] = btn;
 		}
 		return btns;

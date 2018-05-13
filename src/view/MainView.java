@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,6 +32,8 @@ public class MainView extends JFrame{
 		//setLayout(null);
 		// 点关闭按钮时退出程序
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+
 		
 	}
 	
@@ -104,6 +107,7 @@ public class MainView extends JFrame{
 		// 使用外观
 		try{
 	        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+	        UIManager.put("RootPane.setupButtonVisible", false);
 	        
 	    }
 	    catch(Exception e){

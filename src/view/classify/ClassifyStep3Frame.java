@@ -8,7 +8,9 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileSystemView;
 
 import view.com.MyFrame;
 
@@ -19,19 +21,29 @@ public class ClassifyStep3Frame extends MyFrame{
 	private String outputPath = null;
 	private List<String> folderPaths = null;
 	
+	private JLabel message = null;
+	private JTextField txOutputPath = null;
 	private JButton btnChoosePath = null;
 	
-	private JTextField txOutputPath = null;
+	FileSystemView fsv = null;
 	
 	public ClassifyStep3Frame(String t, List<String> folders, String m) {
 		title = t;
 		folderPaths = folders;
 		method = m;
 		
+		// 设置默认路径为  用户/图片
+		fsv = javax.swing.filechooser.FileSystemView.getFileSystemView();
+		outputPath = fsv.getDefaultDirectory().getParent() + "\\Pictures";
+		
+		
 		initCompent();
 	}
 	
 	private void initCompent() {
+		// 设置标题
+		setTitle(title);
+				
 		btnLast.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -41,7 +53,6 @@ public class ClassifyStep3Frame extends MyFrame{
 					new ClassifyStep1Frame(title, folderPaths);
 				}
 				dispose();
-				
 			}
 		});
 		
@@ -51,23 +62,38 @@ public class ClassifyStep3Frame extends MyFrame{
 				// 非空检查
 				dispose();
 				new ClassifyStep4Frame(title, folderPaths, method, outputPath);
-				
-				
 			}
 		});
 		
-		
+		message = getMessage();
 		txOutputPath = getTxOutputPath();
 		btnChoosePath = getChoosePath();
+		subPanel.add(message);
 		subPanel.add(txOutputPath);
 		subPanel.add(btnChoosePath);
+	}
+	
+	private JLabel getMessage() {
+		JLabel label = new JLabel();
+		label.setText("请选择导出图片路径:");
+		label.setSize(200,50);
+		label.setLocation(75,150);
+		return label;
+	}
+	
+	private JTextField getTxOutputPath() {
+		JTextField tf = new JTextField();
+		tf.setText(outputPath);
+		tf.setSize(470,25);
+		tf.setLocation(100, 200);
+		return tf;
 	}
 	
 	private JButton getChoosePath() {
 		JButton btn = new JButton();
 		btn.setText("浏览");
 		btn.setSize(BUTTON_WIDTH,BUTTON_HEIGHT);
-		btn.setLocation(575,250);
+		btn.setLocation(575,200);
 		btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,13 +103,7 @@ public class ClassifyStep3Frame extends MyFrame{
 		return btn;
 	}
 	
-	private JTextField getTxOutputPath() {
-		JTextField tf = new JTextField();
-		tf.setText("设个默认路径才好");
-		tf.setSize(470,25);
-		tf.setLocation(100, 250);
-		return tf;
-	}
+	
 	
 	private void chooseOutputPath() {
 		// 获取文件夹路径
