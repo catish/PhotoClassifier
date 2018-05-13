@@ -51,14 +51,17 @@ public class FileInfoHelper {
 			Metadata metadata = null;
 			try {
 				metadata = JpegMetadataReader.readMetadata(jpegFile);
+				Directory exif = metadata.getDirectory(ExifDirectory.class);
+				s = exif.getString(ExifDirectory.TAG_DATETIME_ORIGINAL);
 				
 			} catch (JpegProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}  
-			Directory exif = metadata.getDirectory(ExifDirectory.class);
-			s = exif.getString(ExifDirectory.TAG_DATETIME_ORIGINAL);
-			//System.out.println(s);
+			
+			if(s == null) {
+				s = "Œ¥÷™";
+			}
 			return(s);
 		}
 	
@@ -68,17 +71,19 @@ public class FileInfoHelper {
 		String s = null;
 		File jpegFile = new File(photoDir);
 		Metadata metadata = null;
+		String s1 = null,s2 = null;
 		try {
 			metadata = JpegMetadataReader.readMetadata(jpegFile);
+			Directory gps = metadata.getDirectory(GpsDirectory.class);
+			s1 = gps.getString(GpsDirectory.TAG_GPS_LONGITUDE);
+			s2 = gps.getString(GpsDirectory.TAG_GPS_LONGITUDE_REF);
 			
 		} catch (JpegProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(photoDir + "is wrong"); 
 		}  
-		Directory gps = metadata.getDirectory(GpsDirectory.class);
-		String s1 = gps.getString(GpsDirectory.TAG_GPS_LONGITUDE);
-		String s2 = gps.getString(GpsDirectory.TAG_GPS_LONGITUDE_REF);
+		
 		
 		if(hasGps(s1)) {
 			s = gpsTrans(s1);
@@ -94,16 +99,18 @@ public class FileInfoHelper {
 		String s = null;
 		File jpegFile = new File(photoDir);
 		Metadata metadata = null;
+		String s1 = null,s2 = null;
 		try {
 			metadata = JpegMetadataReader.readMetadata(jpegFile);
+			Directory gps = metadata.getDirectory(GpsDirectory.class);
+			s1 = gps.getString(GpsDirectory.TAG_GPS_LATITUDE);
+			s2 = gps.getString(GpsDirectory.TAG_GPS_LATITUDE_REF);
 			
 		} catch (JpegProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
-		Directory gps = metadata.getDirectory(GpsDirectory.class);
-		String s1 = gps.getString(GpsDirectory.TAG_GPS_LATITUDE);
-		String s2 = gps.getString(GpsDirectory.TAG_GPS_LATITUDE_REF);
+		
 		
 		if(hasGps(s1)) {
 			s = gpsTrans(s1);
@@ -147,7 +154,7 @@ public class FileInfoHelper {
         return allAdd;      
     }  
 	
-	// ≈–∂œ’’∆¨ «∑Ò”–
+	// ≈–∂œ’’∆¨ «∑Ò”–GPS–≈œ¢
 	private boolean hasGps(String s) {
 		//System.out.println(s);
 		if(s==null) {

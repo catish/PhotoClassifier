@@ -1,11 +1,9 @@
 package helper;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +18,18 @@ public class ClassifyHelper {
 	public Map<String, List<String>> byTime(Map<String,String> photoInfos,  String method) {
 		for(String path : photoInfos.keySet()) {
 			String time = photoInfos.get(path);
-			System.out.println(time);
-			String[] temp = time.split(":");
-			if(method.equals("按月份")) {
-				photoInfos.put(path, temp[0] + temp[1]); 
-			} else if(method.equals("按年份")) {
-				photoInfos.put(path, temp[0]);
+			if(time.equals("未知")) {
+				photoInfos.put(path, "未知");
+			} else {
+				String[] temp = time.split(":");
+				if(method.equals("按月份")) {
+					photoInfos.put(path, temp[0] + temp[1]); 
+				} else if(method.equals("按年份")) {
+					photoInfos.put(path, temp[0]);
+				}
 			}
+			
+			
 		}
 		
 		Map<String, List<String>> res = new HashMap<String, List<String>>();
@@ -48,7 +51,7 @@ public class ClassifyHelper {
 		for(String path : photoInfos.keySet()) {
 			String add = photoInfos.get(path);
 			if(add.equals("未知")) {
-				photoInfos.put(path, add);
+				photoInfos.put(path, "未知");
 			} else {
 				String[] temp = add.split(",");
 				if(method.equals("按省份")) {
